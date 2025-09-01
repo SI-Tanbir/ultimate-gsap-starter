@@ -1,3 +1,5 @@
+import { gsap } from "gsap";
+
 // Select the "Repeat" button
 const repeat = document.querySelector(".repeat");
 
@@ -20,6 +22,13 @@ const chartHeight = chart.clientHeight;
 const barWidth = 50;
 const spacing = 25;
 const maxValue = Math.max(...data.map((d) => d.value));
+
+const reRenderedData=data.map((d)=>d.value)
+
+
+console.log("reRenderedData",...reRenderedData)
+
+
 
 // Render the bar chart
 function renderChart() {
@@ -47,6 +56,15 @@ function renderChart() {
     chart.appendChild(wrapper);
 
     // 👇 This is where GSAP animation will go later
+
+
+    gsap.to(bar,{
+      // height:barHeight,
+      scaleY:1,
+      duration:0.5,
+      ease: "elastic.out(1,1.3)",
+      delay:i*0.1
+    })
   });
 }
 
